@@ -12,6 +12,7 @@ import { MealPlanDayDetail } from '@/components/meal-planner/MealPlanDayDetail';
 import { MealPlanWeekGrid } from '@/components/meal-planner/MealPlanWeekGrid';
 import { generateMealPlan } from '@/services/aiService';
 import { mockMealPlan } from '@/services/mockData';
+import { exportMealPlanPDF } from '@/utils/exportPDF';
 import type { MealPlanDay, Recipe } from '@/types';
 import './MealPlanner.css';
 
@@ -75,7 +76,10 @@ export const MealPlanner: React.FC = () => {
           variant="ghost"
           size="sm"
           icon={<FiDownload />}
-          onClick={() => toast.success('Meal plan exported as PDF!')}
+          onClick={() => {
+            exportMealPlanPDF(mealPlan, preferences || undefined);
+            toast.success('Meal plan saved as meal-plan.pdf');
+          }}
         >
           Export PDF
         </Button>
