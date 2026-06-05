@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { FiDownload, FiRefreshCw } from 'react-icons/fi';
@@ -10,7 +10,7 @@ import { MealPlanForm } from '@/components/meal-planner/MealPlanForm';
 import { MealPlanDayTabs } from '@/components/meal-planner/MealPlanDayTabs';
 import { MealPlanDayDetail } from '@/components/meal-planner/MealPlanDayDetail';
 import { MealPlanWeekGrid } from '@/components/meal-planner/MealPlanWeekGrid';
-import { generateMealPlan } from '@/services/aiService';
+import { streamMealPlan } from '@/services/aiService';
 import { mockMealPlan } from '@/services/mockData';
 import { exportMealPlanPDF } from '@/utils/exportPDF';
 import type { MealPlanDay, Recipe } from '@/types';
@@ -24,24 +24,41 @@ export const MealPlanner: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<string>(mockMealPlan[0]?.day || 'Monday');
   const [planError, setPlanError] = useState<string | null>(null);
   const [lastPref, setLastPref] = useState('');
+  const abortRef = useRef<AbortController | null>(null);
 
   const handleGenerate = async (pref?: string) => {
     const usedPref = pref ?? preferences;
     setLastPref(usedPref);
+
+    // Cancel any in-flight generation
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     setIsGenerating(true);
     setPlanError(null);
+
     try {
-      const data = await generateMealPlan(usedPref);
-      setMealPlan(data);
-      setSelectedDay(data[0]?.day || 'Monday');
-      toast.success('AI Meal Plan generated!');
+      let firstYield = true;
+      for await (const days of streamMealPlan(usedPref || undefined, controller.signal)) {
+        if (controller.signal.aborted) return;
+        if (firstYield) {
+          firstYield = false;
+          setSelectedDay(days[0]?.day || 'Monday');
+        }
+        setMealPlan(days);
+      }
+      if (!controller.signal.aborted) {
+        toast.success('AI Meal Plan generated!');
+        setIsGenerating(false);
+      }
     } catch (err) {
+      if (controller.signal.aborted) return;
       console.error(err);
       setPlanError(
         'Failed to generate your meal plan. This may be due to an API configuration issue or network error.'
       );
       setMealPlan(mockMealPlan);
-    } finally {
       setIsGenerating(false);
     }
   };
