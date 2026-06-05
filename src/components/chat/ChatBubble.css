@@ -1,0 +1,130 @@
+.chat-bubble-container {
+  display: flex;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bubble-fade-in 0.35s ease-out forwards;
+}
+
+@keyframes bubble-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-bubble-container--user {
+  justify-content: flex-end;
+}
+
+.chat-bubble-container--assistant {
+  justify-content: flex-start;
+}
+
+/* Chef avatar */
+.chat-bubble__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Message core bubble */
+.chat-bubble {
+  max-width: 70%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .chat-bubble {
+    max-width: 85%;
+  }
+}
+
+.chat-bubble--user {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-lg) 2px var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.15);
+}
+
+.chat-bubble--assistant {
+  background-color: var(--color-warm-200);
+  color: var(--color-warm-900);
+  border-radius: 2px var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  border: 1px solid var(--color-warm-300);
+}
+
+.chat-bubble__time {
+  font-size: 10px;
+  color: var(--color-warm-400);
+  margin-top: var(--space-1);
+  align-self: flex-end;
+}
+
+.chat-bubble--user .chat-bubble__time {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Markdown parsing output classes */
+.chat-bubble__markdown p {
+  margin: 0 0 var(--space-2) 0;
+}
+.chat-bubble__markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-bubble__markdown ul, .chat-bubble__markdown ol {
+  margin: 0 0 var(--space-2) 0;
+  padding-left: var(--space-4);
+}
+
+.chat-bubble__markdown li {
+  margin-bottom: var(--space-1);
+}
+
+.chat-bubble__markdown strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.chat-bubble__markdown code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9em;
+}
+
+.chat-bubble--user .chat-bubble__markdown code {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.chat-bubble__cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--color-primary);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

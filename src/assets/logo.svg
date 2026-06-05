@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 255" fill="none">
+
+  <!-- ══ CHEF HAT ══ -->
+  <!-- Crown (puffy dome) -->
+  <ellipse cx="140" cy="52" rx="55" ry="46" fill="white" stroke="#1a1a2e" stroke-width="4.5"/>
+  <!-- Hat band / brim -->
+  <rect x="79" y="87" width="122" height="16" rx="5" fill="white" stroke="#1a1a2e" stroke-width="4.5"/>
+  <!-- Puff crease lines on hat crown -->
+  <path d="M115 28 Q112 42 116 56" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M140 22 Q137 38 140 55" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round"/>
+  <path d="M165 28 Q168 42 164 56" stroke="#d0d0d0" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- ══ FORK ══ -->
+  <!-- Three tines -->
+  <rect x="26" y="100" width="7" height="34" rx="3.5" fill="#1a1a2e"/>
+  <rect x="36" y="100" width="7" height="34" rx="3.5" fill="#1a1a2e"/>
+  <rect x="46" y="100" width="7" height="34" rx="3.5" fill="#1a1a2e"/>
+  <!-- Neck (connects tines to handle) -->
+  <rect x="26" y="130" width="27" height="10" rx="0" fill="#1a1a2e"/>
+  <!-- Handle -->
+  <rect x="33" y="138" width="13" height="70" rx="6.5" fill="#1a1a2e"/>
+
+  <!-- ══ ROBOT HEAD ══ -->
+  <rect x="86" y="90" width="108" height="82" rx="14" fill="#1a1a2e"/>
+
+  <!-- Left eye (white rect + dark pupil) -->
+  <rect x="97" y="105" width="30" height="23" rx="4" fill="white"/>
+  <rect x="106" y="110" width="11" height="13" rx="3" fill="#1a1a2e"/>
+
+  <!-- Right eye -->
+  <rect x="153" y="105" width="30" height="23" rx="4" fill="white"/>
+  <rect x="162" y="110" width="11" height="13" rx="3" fill="#1a1a2e"/>
+
+  <!-- Smile -->
+  <path d="M105 142 Q140 157 175 142" stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- ══ ROBOT BODY (white torso) — drawn first so collar sits on top ══ -->
+  <rect x="90" y="178" width="100" height="48" rx="10"
+        fill="white" stroke="#1a1a2e" stroke-width="3.5"/>
+
+  <!-- ══ RED SCARF / COLLAR ══ -->
+  <path d="M94 170 L140 196 L186 170 L174 164 L140 184 L106 164 Z"
+        fill="#c0392b" stroke="#1a1a2e" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- ══ BOWL ══ -->
+  <!-- Bowl opening ellipse -->
+  <ellipse cx="228" cy="172" rx="38" ry="16" fill="#f0faf0" stroke="#1a1a2e" stroke-width="3.5"/>
+  <!-- Bowl body (lower half arc) -->
+  <path d="M190 172 Q190 210 228 215 Q266 210 266 172" fill="#f0faf0" stroke="#1a1a2e" stroke-width="3.5"/>
+  <!-- Rim accent line (green) -->
+  <ellipse cx="228" cy="172" rx="38" ry="16" fill="none" stroke="#2e7d32" stroke-width="2.5"/>
+
+  <!-- Orange / tangerine in bowl -->
+  <circle cx="228" cy="161" r="19" fill="#FF8C42" stroke="#1a1a2e" stroke-width="2.5"/>
+  <!-- Segment lines on orange -->
+  <path d="M228 142 L228 180" stroke="#c95e10" stroke-width="1.5" opacity="0.7"/>
+  <path d="M209 161 L247 161" stroke="#c95e10" stroke-width="1.5" opacity="0.7"/>
+  <path d="M214 147 L242 175" stroke="#c95e10" stroke-width="1.2" opacity="0.5"/>
+  <path d="M242 147 L214 175" stroke="#c95e10" stroke-width="1.2" opacity="0.5"/>
+
+  <!-- Green leaves -->
+  <path d="M222 142 Q214 127 203 124 Q210 136 220 143 Z"
+        fill="#2e7d32" stroke="#1a1a2e" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M233 141 Q242 126 254 126 Q246 138 232 143 Z"
+        fill="#388e3c" stroke="#1a1a2e" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Leaf stems -->
+  <path d="M228 142 Q222 135 210 127" stroke="#1a5c1a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M228 142 Q236 134 250 128" stroke="#1a5c1a" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+</svg>

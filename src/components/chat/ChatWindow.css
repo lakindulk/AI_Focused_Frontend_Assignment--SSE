@@ -1,0 +1,95 @@
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-warm-50);
+  border: 1px solid var(--color-warm-300);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.chat-window__messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-warm-100);
+}
+
+.chat-window__empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-grow: 1;
+  padding: var(--space-8) var(--space-6);
+}
+
+.chat-window__empty-icon {
+  font-size: 56px;
+  color: var(--color-primary-light);
+  margin-bottom: var(--space-4);
+  animation: float 4s ease-in-out infinite;
+}
+
+.chat-window__empty-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-h3);
+  color: var(--color-warm-900);
+  margin: 0 0 var(--space-2) 0;
+  font-weight: var(--font-weight-bold);
+}
+
+.chat-window__empty-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--color-warm-500);
+  max-width: 400px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.chat-window__footer {
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-warm-50);
+  border-top: 1px solid var(--color-warm-200);
+}
+
+.chat-window__stop-row {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-2) var(--space-6);
+}
+
+.chat-window__stop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-warm-100);
+  border: 1px solid var(--color-warm-300);
+  border-radius: var(--radius-full);
+  color: var(--color-warm-700);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.chat-window__stop-btn:hover {
+  background: var(--color-warm-200);
+  border-color: var(--color-warm-400);
+}
+
+@media (max-width: 768px) {
+  .chat-window__messages {
+    padding: var(--space-4);
+  }
+  .chat-window__footer {
+    padding: var(--space-3);
+  }
+}

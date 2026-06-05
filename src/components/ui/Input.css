@@ -1,0 +1,109 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: var(--space-4);
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-field {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--color-warm-900);
+  background: var(--color-warm-50);
+  border: 1.5px solid var(--color-warm-300);
+  border-radius: var(--radius-lg);
+  outline: none;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* Float label styles */
+.input-container--has-label .input-field {
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-2);
+}
+
+.input-field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-bg);
+}
+
+.input-field--error {
+  border-color: var(--color-error);
+}
+
+.input-field--error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px var(--color-error-bg);
+}
+
+/* Icons */
+.input-icon-prefix {
+  position: absolute;
+  left: var(--space-4);
+  color: var(--color-warm-500);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color var(--transition-base);
+}
+
+.input-field:focus ~ .input-icon-prefix {
+  color: var(--color-primary);
+}
+
+.input-container--has-prefix .input-field {
+  padding-left: calc(var(--space-4) + 24px);
+}
+
+/* Floating Label */
+.input-label {
+  position: absolute;
+  left: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--color-warm-500);
+  pointer-events: none;
+  transition: transform var(--transition-base), top var(--transition-base), font-size var(--transition-base), color var(--transition-base);
+}
+
+.input-container--has-prefix .input-label {
+  left: calc(var(--space-4) + 24px);
+}
+
+.input-container--active .input-label {
+  top: var(--space-2);
+  transform: translateY(0);
+  font-size: var(--text-caption);
+  color: var(--color-primary);
+}
+
+.input-container--active.input-container--has-prefix .input-label {
+  left: var(--space-4);
+}
+
+.input-container--error .input-label {
+  color: var(--color-error);
+}
+
+/* Error message */
+.input-error-msg {
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  color: var(--color-error);
+  margin-top: var(--space-1);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}

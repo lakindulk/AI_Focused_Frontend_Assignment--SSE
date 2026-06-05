@@ -1,0 +1,531 @@
+.planner-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: calc(var(--navbar-height) + var(--space-8)) var(--space-6) var(--space-16);
+  width: 100%;
+}
+
+/* ── Header ── */
+.planner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.planner-header__left { display: flex; flex-direction: column; gap: var(--space-1); }
+
+.planner-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-1);
+}
+
+.planner-header__title {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 3vw, 34px);
+  color: var(--color-warm-900);
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.planner-header__desc {
+  font-size: var(--text-body-sm);
+  color: var(--color-warm-500);
+  margin: 0;
+}
+
+/* ── Generate Panel ── */
+.planner-panel {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.planner-panel__top {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.planner-panel__icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 1px solid rgba(217, 140, 95, 0.2);
+}
+
+.planner-panel__info { display: flex; flex-direction: column; gap: 2px; }
+.planner-panel__info-title { font-size: 15px; font-weight: var(--font-weight-bold); color: var(--color-warm-900); }
+.planner-panel__info-sub   { font-size: 12px; color: var(--color-warm-500); }
+
+.planner-panel__form { display: flex; flex-direction: column; gap: var(--space-3); }
+
+.planner-panel__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.planner-preset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 6px 14px;
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-full);
+  background: var(--color-warm-50);
+  color: var(--color-warm-700);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-body);
+}
+
+.planner-preset-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-bg);
+}
+
+.planner-preset-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.planner-panel__row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.planner-panel__input-group { flex: 1; min-width: 240px; }
+
+.planner-panel__input {
+  width: 100%;
+  height: 46px;
+  padding: 0 var(--space-4);
+  background: var(--color-warm-50);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm);
+  color: var(--color-warm-800);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  outline: none;
+}
+
+.planner-panel__input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-bg);
+}
+.planner-panel__input::placeholder { color: var(--color-warm-400); }
+.planner-panel__input:disabled { opacity: 0.6; }
+
+/* ── Day Tabs strip ── */
+.planner-days-strip {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-5);
+  scrollbar-width: none;
+}
+.planner-days-strip::-webkit-scrollbar { display: none; }
+
+.planner-day-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-body);
+  flex-shrink: 0;
+  min-width: 72px;
+}
+
+.planner-day-tab:hover:not(.planner-day-tab--active) { border-color: var(--color-primary); }
+
+.planner-day-tab--active {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 16px rgba(217, 140, 95, 0.38);
+}
+
+.planner-day-tab__name {
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+}
+
+.planner-day-tab__cals {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.planner-day-tab--active .planner-day-tab__cals { opacity: 0.85; }
+
+/* ── Selected Day Detail ── */
+.planner-detail {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.planner-detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.planner-detail__day-name {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-warm-900);
+  margin: 0;
+}
+
+.planner-detail__stats {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--color-warm-50);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-warm-200);
+}
+
+.planner-detail__stat { font-size: 14px; color: var(--color-warm-600); }
+.planner-detail__stat strong { color: var(--color-warm-900); font-weight: var(--font-weight-semibold); }
+
+.planner-detail__stat-sep {
+  width: 4px;
+  height: 4px;
+  background: var(--color-warm-300);
+  border-radius: 50%;
+}
+
+.planner-detail__meals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* ── Meal cards ── */
+.planner-meal-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.planner-meal-card__label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 10.5px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warm-500);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.planner-meal-card__content {
+  display: flex;
+  gap: var(--space-3);
+  background: var(--color-warm-50);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.planner-meal-card__content:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.planner-meal-card__emoji-cell {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-warm-100), var(--color-warm-200));
+  border: 1.5px solid var(--color-warm-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.planner-meal-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.planner-meal-card__title {
+  font-family: var(--font-heading);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-warm-900);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.planner-meal-card__desc {
+  font-size: 11.5px;
+  color: var(--color-warm-500);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.planner-meal-card__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.planner-meal-card__meta-item {
+  font-size: 11px;
+  color: var(--color-warm-600);
+  font-weight: var(--font-weight-medium);
+}
+
+.planner-meal-card__meta-sep {
+  width: 3px;
+  height: 3px;
+  background: var(--color-warm-300);
+  border-radius: 50%;
+}
+
+.planner-meal-card__tag {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 8px;
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+}
+
+.planner-meal-card__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 110px;
+  background: var(--color-warm-50);
+  border: 2px dashed var(--color-warm-200);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--color-warm-400);
+  font-size: 13px;
+  font-family: var(--font-body);
+}
+
+.planner-meal-card__empty:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+}
+
+/* ── Week Grid ── */
+.planner-week-grid__title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-warm-800);
+  margin: 0 0 var(--space-4);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-3);
+}
+
+.planner-day-col {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.planner-day-col:hover { border-color: var(--color-warm-300); box-shadow: var(--shadow-sm); }
+.planner-day-col--selected { border-color: var(--color-primary); box-shadow: 0 0 0 2px rgba(217, 140, 95, 0.15); }
+
+.planner-day-col__header {
+  background: var(--color-warm-50);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-warm-200);
+  text-align: center;
+}
+
+.planner-day-col__name {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warm-900);
+  display: block;
+}
+
+.planner-day-col__summary {
+  font-size: 10px;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  margin-top: 1px;
+}
+
+.planner-day-col__slots {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2);
+  gap: var(--space-2);
+  flex: 1;
+}
+
+/* Slot cards */
+.meal-slot { display: flex; flex-direction: column; gap: 2px; }
+
+.meal-slot__label {
+  font-size: 9px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warm-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meal-slot-card {
+  border: 1px solid var(--color-warm-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  background: var(--color-warm-50);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-height: 58px;
+  display: flex;
+  flex-direction: column;
+}
+
+.meal-slot-card:hover { border-color: var(--color-primary-light); box-shadow: var(--shadow-sm); }
+
+.meal-slot-card__title {
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-warm-800);
+  margin: 0 0 2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+.meal-slot-card__calories {
+  font-size: 9px;
+  color: var(--color-primary);
+  margin-top: auto;
+  font-weight: var(--font-weight-medium);
+}
+
+.meal-slot-card--empty {
+  border-style: dashed;
+  background: var(--color-warm-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--color-warm-400);
+  font-size: 10px;
+  font-family: var(--font-body);
+}
+
+.meal-slot-card--empty:hover {
+  background: var(--color-primary-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary-dark);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .planner-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .planner-page {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+    padding-bottom: calc(var(--mobile-nav-height) + var(--space-8));
+  }
+
+  .planner-detail { padding: var(--space-4); }
+  .planner-detail__meals { grid-template-columns: 1fr; gap: var(--space-3); }
+  .planner-grid { grid-template-columns: repeat(2, 1fr); }
+  .planner-meal-card__emoji-cell { width: 56px; height: 56px; font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+  .planner-grid { grid-template-columns: 1fr; }
+  .planner-days-strip { gap: var(--space-1); }
+  .planner-day-tab { min-width: 60px; padding: var(--space-2) var(--space-3); }
+  .planner-panel__input-group { min-width: 100%; }
+}
+
+/* ── Generation error state ───────────────────────────────────── */
+.planner-error {
+  margin: 0 0 var(--space-6);
+  max-width: 480px;
+}

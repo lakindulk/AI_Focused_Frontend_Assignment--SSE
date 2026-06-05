@@ -1,0 +1,61 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2_5);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* ── Difficulty ───────────────────────────────────────────────────── */
+.badge--easy {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.badge--medium {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.badge--hard {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+/* ── Diet ─────────────────────────────────────────────────────────── */
+.badge--diet {
+  background-color: rgba(217, 140, 95, 0.12);
+  color: var(--color-primary-dark);
+}
+
+/* ── Calorie ──────────────────────────────────────────────────────── */
+.badge--calorie {
+  background-color: var(--color-warm-200);
+  color: var(--color-warm-700);
+}
+
+/* ── Time ─────────────────────────────────────────────────────────── */
+.badge--time {
+  background-color: var(--color-warm-200);
+  color: var(--color-warm-700);
+}
+
+/* ── AI Match ─────────────────────────────────────────────────────── */
+.badge--ai-match {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-sm);
+}
+
+.badge__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+}

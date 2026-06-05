@@ -1,0 +1,127 @@
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--mobile-nav-height);
+  background: rgba(250, 247, 243, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--color-warm-200);
+  box-shadow: 0 -4px 24px rgba(30, 21, 14, 0.07);
+  display: none;
+  z-index: var(--z-fixed);
+  /* safe-area for iPhones with home indicator */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (max-width: 768px) {
+  .mobile-nav { display: block; }
+}
+
+.mobile-nav__container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 100%;
+  align-items: center;
+  position: relative;
+}
+
+.mobile-nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  text-decoration: none;
+  color: var(--color-warm-400);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  height: 100%;
+  transition: color var(--transition-base), transform var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav__link:active {
+  transform: scale(0.93);
+}
+
+.mobile-nav__icon {
+  font-size: 21px;
+  transition: transform var(--transition-fast);
+}
+
+.mobile-nav__link--active {
+  color: var(--color-primary);
+}
+
+.mobile-nav__link--active .mobile-nav__icon {
+  transform: scale(1.12);
+}
+
+/* Active dot indicator */
+.mobile-nav__link--active::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  margin-top: 2px;
+  animation: scaleIn 0.2s ease-out;
+}
+
+/* Floating AI center button */
+.mobile-nav__link--ai {
+  position: relative;
+  height: auto;
+}
+
+/* Remove dot from AI button (it has its own indicator) */
+.mobile-nav__link--ai::after { display: none; }
+
+.mobile-nav__ai-btn-wrapper {
+  position: absolute;
+  top: -28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobile-nav__ai-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-dark));
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(217, 140, 95, 0.45);
+  border: 3px solid var(--color-warm-100);
+  transition: transform var(--transition-fast), box-shadow var(--transition-base);
+}
+
+.mobile-nav__link--ai:active .mobile-nav__ai-btn {
+  transform: scale(0.93);
+}
+
+.mobile-nav__link--active .mobile-nav__ai-btn {
+  box-shadow: 0 4px 24px rgba(217, 140, 95, 0.6);
+  border-color: white;
+}
+
+.mobile-nav__ai-label {
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warm-500);
+  margin-top: 24px;
+  white-space: nowrap;
+}
+
+.mobile-nav__link--active .mobile-nav__ai-label {
+  color: var(--color-primary);
+}

@@ -1,0 +1,184 @@
+.recipe-card {
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(217, 140, 95, 0.35);
+}
+
+/* ── Top bar ── */
+.recipe-card__top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-warm-100);
+  background: var(--color-warm-50);
+}
+
+.recipe-card__top-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.recipe-card__cuisine-emoji {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* ── Cuisine tag ── */
+.recipe-card__cuisine-tag {
+  font-size: 10.5px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-warm-700);
+  background: var(--color-warm-200);
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ── AI match score badge ── */
+.recipe-card__match-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 9px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent-dark));
+  color: white;
+  border-radius: var(--radius-full);
+  font-size: 10.5px;
+  font-weight: var(--font-weight-bold);
+  box-shadow: 0 2px 8px rgba(217, 140, 95, 0.35);
+  white-space: nowrap;
+}
+
+.recipe-card__match-icon { font-size: 9px; }
+
+/* ── Favourite button ── */
+.recipe-card__fav-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-warm-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-warm-400);
+  transition: color var(--transition-base), transform var(--transition-fast), border-color var(--transition-base);
+  font-size: 15px;
+}
+
+.recipe-card__fav-btn:hover { transform: scale(1.18); color: var(--color-error); border-color: var(--color-error); }
+.recipe-card__fav-btn--active {
+  color: var(--color-error);
+  border-color: var(--color-error);
+  animation: heartBeat 0.4s ease-out;
+}
+
+/* ── Card body ── */
+.recipe-card__body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-2);
+  background: var(--color-white);
+}
+
+.recipe-card__reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.recipe-card__reason-tag {
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  background: var(--color-primary-bg);
+  color: var(--color-primary-dark);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(217, 140, 95, 0.15);
+}
+
+.recipe-card__title {
+  font-family: var(--font-heading);
+  font-size: 15.5px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-warm-900);
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recipe-card__desc {
+  font-size: 12.5px;
+  color: var(--color-warm-500);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.recipe-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-warm-100);
+}
+
+/* ── AI Tip strip ── */
+.recipe-card__ai-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  font-size: 11px;
+  color: var(--color-warm-600);
+  background: linear-gradient(135deg, var(--color-primary-bg), rgba(240, 192, 128, 0.08));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(217, 140, 95, 0.15);
+  line-height: 1.45;
+}
+
+.recipe-card__ai-tip-icon {
+  color: var(--color-primary);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .recipe-card__body { padding: var(--space-3); }
+  .recipe-card__title { font-size: 14px; }
+}
