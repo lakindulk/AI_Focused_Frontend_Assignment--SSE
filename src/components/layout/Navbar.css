@@ -191,11 +191,17 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .navbar__nav    { display: none; }
-  .navbar__status { display: none; }
-  .navbar__cta    { display: none; }
+  .navbar__nav      { display: none; }
+  .navbar__status   { display: none; }
+  .navbar__cta      { display: none; }
   .navbar__menu-btn { display: flex; }
   .navbar__container { padding: 0 var(--space-4); gap: var(--space-3); }
+}
+
+@media (max-width: 360px) {
+  .navbar__logo-icon { width: 34px; height: 34px; }
+  .navbar__logo-text { font-size: 17px; }
+  .navbar__container { padding: 0 var(--space-3); }
 }
 
 /* ── Mobile Drawer ── */

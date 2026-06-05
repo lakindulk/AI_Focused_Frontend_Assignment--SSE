@@ -38,7 +38,7 @@ export const SearchInputSection: React.FC<SearchInputSectionProps> = ({
     <div className="home-search-input-row">
       <Input
         isSearch
-        placeholder="Try: 'high protein dinner under 30 mins'…"
+        placeholder="Search recipes, ingredients…"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="home-search-input-field"

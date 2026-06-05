@@ -37,7 +37,7 @@ export const CookingModeModal: React.FC<CookingModeModalProps> = ({ isOpen, onCl
           />
         </div>
 
-        <div style={{ fontSize: "18px", fontFamily: "var(--font-body)", color: "var(--color-gray-900)", lineHeight: 1.7, minHeight: "120px", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 8px" }}>
+        <div style={{ fontSize: "clamp(14px, 3.5vw, 18px)", fontFamily: "var(--font-body)", color: "var(--color-gray-900)", lineHeight: 1.7, minHeight: "80px", display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px" }}>
           {recipe.instructions[stepIdx]}
         </div>
 

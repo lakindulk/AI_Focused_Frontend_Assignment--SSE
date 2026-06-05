@@ -33,6 +33,7 @@ const pageVariants: any = {
 export const PageWrapper: React.FC<PageWrapperProps> = ({ children, className = '', style }) => {
   return (
     <motion.div
+      id="main-content"
       variants={pageVariants}
       initial="initial"
       animate="animate"
