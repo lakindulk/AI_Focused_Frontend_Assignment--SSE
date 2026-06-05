@@ -12,7 +12,7 @@ interface SearchInputSectionProps {
   isListening: boolean;
   pickerSource: PickerSource;
   activeIngredient: string | null;
-  imageInputRef: React.RefObject<HTMLInputElement>;
+  imageInputRef: React.RefObject<HTMLInputElement | null>;
   onSubmit: (e: React.SyntheticEvent) => void;
   onVoiceSearch: () => void;
   onIngredientAdd: (tag: string) => void;

@@ -8,7 +8,7 @@ import type { Recipe } from "@/types";
 type PickerSource = "ingredient" | "image";
 
 interface IngredientPickerProps {
-  pickerRef: React.RefObject<HTMLDivElement>;
+  pickerRef: React.RefObject<HTMLDivElement | null>;
   pickerSource: PickerSource;
   imagePreview: string | null;
   isPickerLoading: boolean;
